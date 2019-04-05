@@ -21,14 +21,25 @@ public class SignatureUtility {
   @Autowired
   private SecretService secretService;
   
-  
+  /**
+   *
+   * @param httpServletRequest
+   * @return true if the signature is valid
+   * @throws InvalidKeyException
+   * @throws NoSuchAlgorithmException
+   */
   public boolean validate(HttpServletRequest httpServletRequest) throws InvalidKeyException, NoSuchAlgorithmException {
     
     String path = httpServletRequest.getPathInfo();
     
     String clientId = httpServletRequest.getParameter("clientId");
-    Optional<String> keyString = secretService.getClientkey(clientId);
     
+    Optional<String> keyString = secretService.getClientkey(clientId);
+  
+    /**
+     * @
+     */
+  
     if (keyString.isPresent()) {
       // Assumes that signature is at the very end of the query string
       String resource = path + '?' + httpServletRequest.getQueryString().split("&signature=")[0];

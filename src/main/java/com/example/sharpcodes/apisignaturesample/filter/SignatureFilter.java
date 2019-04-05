@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
 public class SignatureFilter implements Filter {
   
   @Autowired
-  SignatureUtility signatureUtility;
+  private SignatureUtility signatureUtility;
   
   @Override
   public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {

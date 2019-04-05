@@ -35,11 +35,7 @@ public class SignatureUtility {
     String clientId = httpServletRequest.getParameter("clientId");
     
     Optional<String> keyString = secretService.getClientkey(clientId);
-  
-    /**
-     * @
-     */
-  
+    
     if (keyString.isPresent()) {
       // Assumes that signature is at the very end of the query string
       String resource = path + '?' + httpServletRequest.getQueryString().split("&signature=")[0];
